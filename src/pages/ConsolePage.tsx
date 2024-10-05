@@ -261,7 +261,8 @@ export function ConsolePage() {
       await wavRecorder.pause();
     }
     client.updateSession({
-      turn_detection: value === 'none' ? null : { type: 'server_vad' },
+      turn_detection:
+        value === 'none' ? null : { type: 'server_vad', threshold: 0.8 },
     });
     if (value === 'server_vad' && client.isConnected()) {
       await wavRecorder.record((data) => client.appendInputAudio(data.mono));
@@ -302,6 +303,7 @@ export function ConsolePage() {
    */
   useEffect(() => {
     let isLoaded = true;
+    changeTurnEndType('server_vad');
 
     const wavRecorder = wavRecorderRef.current;
     const clientCanvas = clientCanvasRef.current;
@@ -664,7 +666,7 @@ export function ConsolePage() {
           </div>
           <div className="content-actions">
             <Toggle
-              defaultValue={false}
+              defaultValue={true}
               labels={['manual', 'vad']}
               values={['none', 'server_vad']}
               onChange={(_, value) => changeTurnEndType(value)}

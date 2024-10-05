@@ -8,9 +8,6 @@
 # testing
 /coverage
 
-# production
-/build
-
 # packaging
 *.zip
 *.tar.gz

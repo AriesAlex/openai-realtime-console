@@ -1,3 +1,5 @@
+# Fork: Added github pages, enabled vad by default
+
 # OpenAI Realtime Console
 
 The OpenAI Realtime Console is intended as an inspector and interactive API reference
